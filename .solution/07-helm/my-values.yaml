@@ -1,0 +1,5 @@
+exposition:
+  hostname: <trigramme>-devshop.apps.ocp4.innershift.sodigital.io
+
+backend:
+  name: backend
