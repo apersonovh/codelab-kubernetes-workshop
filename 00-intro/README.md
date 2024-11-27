@@ -20,9 +20,9 @@ Ok j'y vois déjà un peu plus clair, mais il va falloir y aller petit à petit.
 
 ## Cheat sheet 📋
 
-**Selection du contexte Kubernetes**
+**Selection du projet openshift**
 ```shell 
-kubectx <context>
+oc project <project-name>`
 ```
 
 **Créé ou configure les ressources décrites dans le fichier yaml**
@@ -49,12 +49,10 @@ kubectl logs <pod-name>
 
 ## Pratique 👷
 
-Récupérer son numéro de participant si pas déjà fourni par les speakers
-
-Se connecter sur le cluster Kubernetes depuis [![Environnement Gitpod](../assets/gitpod.svg)](https://gitpod.io/?autostart=true#https://gitlab.com/codelab-kubernetes/workshop)  
+1. Sélectionner votre contexte 
 
 ```shell
-kubectx student-<numéro>
+oc project <trigramme>-kata-kubernete
 ```
 
 ## Le premier `Pod`, c'est par là [➡️](../01-backend-pod/README.md)
