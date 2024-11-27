@@ -52,7 +52,7 @@ kubectl logs <pod-name>
 1. Sélectionner votre contexte 
 
 ```shell
-oc project <trigramme>-kata-kubernete
+oc project <trigramme>-kata-kubernetes
 ```
 
 ## Le premier `Pod`, c'est par là [➡️](../01-backend-pod/README.md)

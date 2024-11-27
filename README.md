@@ -10,7 +10,7 @@ Ce workshop s'adresse à toute personne souhaitant comprendre les bases du dépl
 
 ## Environnement 👩‍💻
 
-Ouvrez le fichier `README.md` dans l'éditeur VS Code de Gitpod puis affichez la Preview du Markdown pour suivre les instructions. (Clic dans le contenu du fichier `README.md` puis `Ctrl + Shift + V`)  
+Ouvrez le fichier `README.md` dans l'éditeur VS Code puis affichez la Preview du Markdown pour suivre les instructions. (Clic dans le contenu du fichier `README.md` puis `Ctrl + Shift + V`)  
 
 La navigation entre les sections se fait via les flèches de navigation ⬅️ et ➡️.  
 
@@ -21,7 +21,8 @@ La navigation entre les sections se fait via les flèches de navigation ⬅️ e
 
 ### Installation des CLI
  - Récuperer le CLI Helm et installer sur votre poste: https://github.com/helm/helm/releases
- - Récuperer le CLI CLI Openshift sur votre poste:: https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.16.9/openshift-client-windows.zip 
+ - Récuperer le CLI Openshift sur votre poste : https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.16.9/openshift-client-windows.zip 
+ - Recupérer le CLI kubectl sur votre poste : https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#install-kubectl-binary-on-windows-via-direct-download-or-curl
  - Ajouter les dossiers des CLI dans le PATH de votre PC
 
 ### Openshift 
