@@ -40,47 +40,38 @@ La section `spec` permet de définir les caractéristiques du `Service` :
     * `port` : port du `Service`.  
     * `targetPort` : port du `Pod`.    
 
-Un `Ingress` est un objet Kubernetes qui permet d'exposer un `Service` en externe du cluster.  
+Une `Route` est un objet OpenShift qui permet d'exposer un `Service` en externe du cluster.  
 Il permet de choisir quelles URL sont exposées et de gérer le routage des requêtes vers les `Services` correspondants à l'instar d'un reverse proxy ou d'une VIP.  
 
 ```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: route.openshift.io/v1
+kind: Route
 metadata:
   name: appname
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
-  ingressClassName: nginx
+  host: myapp.exmaple.com
+  path: /
+  port:
+    targetPort: 8080
   tls:
-    - hosts:
-        - appname.example.com
-      secretName: tls
-  rules:
-    - host: appname.example.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: appname
-                port:
-                  number: 8080
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: appname
 ```
 
-La section `metadata` permet de définir le nom de l'`Ingress`.  
-La section `spec` permet de définir les caractéristiques de l'`Ingress` :  
-  * `ingressClassName` : permet de définir la classe de l'`Ingress` (par défaut `nginx`).  
-  * `tls` : permet de définir les configurations TLS de l'`Ingress`.  
-    * `hosts` : permet de définir les noms de domaine à exposer.  
-    * `secretName` : permet de définir le nom du `Secret` contenant les certificats TLS. Ce `Secret` est généré par le `cert-manager` grâce aux `annotations` présentes
-  * `rules` : permet de définir une liste de règles de routage, une règle par `host`.  
-    * `host` : permet de définir le nom de domaine à exposer.  
-      * `http.paths[].path` : permet de définir le chemin d'accès concerné.  
-      * `http.paths[].pathType` : permet de définir le type de chemin (`Prefix`, `Exact` ou `ImplementationSpecific`).    
-      * `http.paths[].backend` : permet de définir le `Service` cible du routage. (nom et port)  
+La section `metadata` permet de définir le nom de la `Route`.
+La section `spec` permet de définir les caractéristiques de la `Route` :  
+  * `host` : URL à exposer.  
+  * `path` : chemin de l'URL à exposer.  
+  * `port` : permet de définir le port du `Service` à exposer.  
+  * `tls` : permet de définir les paramètres de sécurité de la `Route`.  
+    * `insecureEdgeTerminationPolicy` : permet de définir la politique de terminaison des connexions non sécurisées.  
+    * `termination` : permet de définir le type de terminaison des connexions sécurisées.  
+  * `to` : permet de définir le `Service` à exposer.  
+
+En dehors d'OpenShift on utilise plutôt un objet `Ingress` qui a globalement les mêmes fonctionnalités.
 
 ## Cheat Sheet 📋
 
@@ -90,11 +81,7 @@ La section `spec` permet de définir les caractéristiques de l'`Ingress` :
 
 ![Service Helper 2](../assets/service-helper-vscode-2.png)
 
-* Astuce : taper `Ingress` dans un fichier `.yaml` sur dans VS Code permet de récupérer un template.
-
-![Ingress Helper 1](../assets/ingress-helper-vscode-1.png)
-
-![Ingress Helper 2](../assets/ingress-helper-vscode-2.png)
+* Astuce : Il n'existe pas de helper pour créer des manifests yaml de `Route` dans l'extension VS Code, réutilisez l'exemple ci-dessus comme base.  
 
 * Astuce : il est possible de séparer plusieurs fragments de `yaml` dans un seul fichier en utilisant `---` comme séparateur.
 
@@ -109,32 +96,36 @@ La section `spec` permet de définir les caractéristiques de l'`Ingress` :
 2) Dans le même fichier, créez un deuxième `Service` :  
     * nommé `shop-frontend-service`  
     * ciblant les `Pods` identifiés par le label `app: shop-frontend-label`  
-    * exposant le port `80` du `Pod` sur le port `80` du `Service`
+    * exposant le port `8080` du `Pod` sur le port `80` du `Service`
 
 
-3) Dans le même fichier, créez un `Ingress` :  
-    * nommé `shop-ingress`  
-    * utilisant le `host` : \<student-X>.devshop.codelab.dwidwi.tech (remplacer `<student-X>` par votre identifiant de participant)
-    * exposant en `https`
-    * exposant le port `80` du `Service` nommé `shop-frontend-service` sur le chemin `/`  
+3) Dans le même fichier, créez une `Route` :  
+    * nommé `shop-backend-route`  
+    * utilisant le `host` : `<trigramme>-devshop.apps.ocp4.innershift.sodigital.io` (remplacer `<trigramme>` par votre trigramme)
     * exposant le port `8080` du `Service` nommé `shop-backend-service` sur le chemin `/api`  
 
 
-4) Déployer les `Services` et l'`Ingress`
+4) Dans le même fichier, créez une `Route` :
+    * nommé `shop-frontend-route`
+    * utilisant le `host` : `<trigramme>-devshop.apps.ocp4.innershift.sodigital.io` (remplacer `<trigramme>` par votre trigramme)
+    * exposant le port `8080` du `Service` nommé `shop-frontend-service` sur le chemin `/`
+
+
+5) Déployer les `Services` et les `Routes`
 ```shell
 kubectl apply -f exposition.yaml
 ```
 
-5) Vérifier le statut des `Services`
+6) Vérifier le statut des `Services`
 ```shell
 kubectl get svc
 ```
 
-6) Vérifier le statut de l'`Ingress`
+7) Vérifier le statut des `Routes`
 ```shell
-kubectl get ingress
+kubectl get route
 ```
 
-7) Tester l'accès à l'application depuis un navigateur : `https://<student-X>.devshop.codelab.dwidwi.tech/` (remplacer `<student-X>` par votre identifiant de participant)  
+8) Tester l'accès à l'application depuis un navigateur : `https://<trigramme>-devshop.apps.ocp4.innershift.sodigital.io/` (remplacer `<trigramme>` par votre trigramme)  
 
 ## Les données sont bien statiques, on passe à la base de données ? [➡️](../05-database/README.md)
