@@ -22,7 +22,7 @@ Ok j'y vois déjà un peu plus clair, mais il va falloir y aller petit à petit.
 
 **Selection du projet openshift**
 ```shell 
-oc project <project-name>`
+oc project <project-name>
 ```
 
 **Créé ou configure les ressources décrites dans le fichier yaml**

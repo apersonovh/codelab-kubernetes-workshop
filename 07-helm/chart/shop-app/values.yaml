@@ -51,4 +51,4 @@ database:
     password: "postgres"
 
 exposition:
-  hostname: "helm-devshop.apps.ocp4.innershift.sodigital.io"
+  hostname: "<trigramme>-devshop.apps.ocp4.innershift.sodigital.io"

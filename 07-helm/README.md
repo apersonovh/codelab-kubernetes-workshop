@@ -124,7 +124,7 @@ helm delete shop-app-release-local
 9) Installer la `release` Helm depuis le repository distant avec des valeurs personnalisées (changement de nom par exemple)
 ```shell
 helm repo add workshop https://gitlab.com/api/v4/projects/61280261/packages/helm/stable
-helm upgrade --install --values my-values.yaml shop-app-release-dist workshop/shop-app
+helm upgrade --install --values my-values.yaml shop-app-release-dist workshop/shop-app-openshift
 ```
 
 10) Vérifier que la `release` a bien été créé

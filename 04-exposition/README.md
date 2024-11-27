@@ -4,7 +4,7 @@
 
 C'est bien ton histoire mais comment j'accède à mon appli ?  
 
-On va voir comment exposer les composants en interne et en externe du cluster. avec les `Services` et les `Ingresses`.  
+On va voir comment exposer les composants en interne et en externe du cluster. avec les `Services` et les `Routes`.  
 
 ![Schéma de l'etape 3.1](../assets/schema-kube-codelab-etape-3.1.png)
 
@@ -96,7 +96,7 @@ En dehors d'OpenShift on utilise plutôt un objet `Ingress` qui a globalement le
 2) Dans le même fichier, créez un deuxième `Service` :  
     * nommé `shop-frontend-service`  
     * ciblant les `Pods` identifiés par le label `app: shop-frontend-label`  
-    * exposant le port `8080` du `Pod` sur le port `80` du `Service`
+    * exposant le port `8080` du `Pod` sur le port `8080` du `Service`
 
 
 3) Dans le même fichier, créez une `Route` :  
