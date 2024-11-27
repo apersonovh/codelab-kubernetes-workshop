@@ -1,3 +1,6 @@
+exposition:
+  hostname: "<trigramme>-devshop.apps.ocp4.innershift.sodigital.io"
+
 backend:
   name: shop-backend
   image: registry.gitlab.com/codelab-kubernetes/apps/shop-backend:database
@@ -49,6 +52,3 @@ database:
   connection:
     databaseName: "shop"
     password: "postgres"
-
-exposition:
-  hostname: "<trigramme>-devshop.apps.ocp4.innershift.sodigital.io"
