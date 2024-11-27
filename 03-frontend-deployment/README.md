@@ -16,7 +16,7 @@ Déployons notre frontend avec un second `Deployment` !
     * nommé `shop-frontend`
     * déployant 1 `Pod`
     * identifiés par le label `app: shop-frontend-label`
-    * exécutant l'image `registry.gitlab.com/codelab-kubernetes/apps/shop-frontend:latest`
+    * exécutant l'image `registry.gitlab.com/codelab-kubernetes/apps/shop-frontend:openshift`
     * allouant `32Mi` de mémoire et `50m` de CPU
     * limitant la mémoire à `128Mi` et le CPU à `100m`
     * exposant le port `8080`  

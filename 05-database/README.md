@@ -158,14 +158,14 @@ Astuce : taper `StatefulSet` dans un fichier `.yaml` sur dans VS Code permet de 
     * utilisant le `Service` headless `shop-database-service`
     * déployant 1 `Pod`  
     * identifié par le label `app: shop-database-label`  
-    * exécutant l'image `registry.gitlab.com/codelab-kubernetes/apps/shop-database:latest`  
+    * exécutant l'image `registry.gitlab.com/codelab-kubernetes/apps/shop-database:openshift`  
     * allouant `64Mi` de mémoire et `100m` de CPU  
     * limitant la mémoire à `256Mi` et le CPU à `500m`  
     * exposant le port `5432`  
     * injectant toute la `ConfigMap` `shop-database-configmap` en tant que variables d'environnement
     * injectant tout le `Secret` `shop-database-secret` en tant que variables d'environnement
     * déclarant un `PersistentVolumeClaim` nommé `postgres-data` de `1Gi` en `ReadWriteOnce`  
-    * déclarant un `volumeMount` nommé `postgres-data` monté dans `/var/lib/postgresql/data` en spécifiant le `subPath: postgres`  
+    * déclarant un `volumeMount` nommé `postgres-data` monté dans `/bitnami/postgresql`  
 
 5) Déployez la base de données 
 ```shell
@@ -200,6 +200,6 @@ kubectl get pods
 kubectl logs deploy/shop-backend
 ```
 
-11) Testez l'accès à l'application depuis un navigateur : `https://<student-X>.devshop.codelab.dwidwi.tech/` (remplacer `<student-X>` par votre identifiant de participant)  
+11) Testez l'accès à l'application depuis un navigateur : `https://<trigramme>-devshop.apps.ocp4.innershift.sodigital.io/` (remplacer `<trigramme>` par votre trigramme)  
 
 ## C'est bon, on a notre application complète, mais est-ce que ça tiendra la charge ? [➡️](../06-backend-autoscaler/README.md)
