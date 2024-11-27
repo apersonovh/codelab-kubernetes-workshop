@@ -13,9 +13,9 @@ spec:
     spec:
       containers:
         - name: shop-frontend
-          image: registry.gitlab.com/codelab-kubernetes/apps/shop-frontend:latest
+          image: registry.gitlab.com/codelab-kubernetes/apps/shop-frontend:openshift
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           resources:
             requests:
               memory: "32Mi"

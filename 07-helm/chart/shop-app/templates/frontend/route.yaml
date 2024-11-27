@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ .Values.frontend.name | default "shop-frontend" }}
+spec:
+  host: {{ .Values.exposition.hostname }}
+  path: /
+  port:
+    targetPort: {{ .Values.frontend.port }}
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: {{ .Values.frontend.name | default "shop-frontend" }}

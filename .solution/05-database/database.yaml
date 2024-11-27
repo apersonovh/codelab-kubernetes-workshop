@@ -42,7 +42,7 @@ spec:
     spec:
       containers:
         - name: shop-database
-          image: registry.gitlab.com/codelab-kubernetes/apps/shop-database:latest
+          image: registry.gitlab.com/codelab-kubernetes/apps/shop-database:openshift
           resources:
             requests:
               memory: "64Mi"
@@ -59,8 +59,7 @@ spec:
                 name: shop-database-secret
           volumeMounts:
             - name: postgres-data
-              mountPath: /var/lib/postgresql/data
-              subPath: postgres
+              mountPath: /bitnami/postgresql
   volumeClaimTemplates:
     - metadata:
         name: postgres-data

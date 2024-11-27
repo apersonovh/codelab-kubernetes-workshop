@@ -28,8 +28,7 @@ spec:
                 name: {{ .Values.database.name | default "shop-database" }}
           volumeMounts:
             - name: postgres-data
-              mountPath: /var/lib/postgresql/data
-              subPath: postgres
+              mountPath: /bitnami/postgresql
   volumeClaimTemplates:
     - metadata:
         name: postgres-data

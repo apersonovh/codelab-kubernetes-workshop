@@ -18,11 +18,11 @@ backend:
 
 frontend:
   name: shop-frontend
-  image: registry.gitlab.com/codelab-kubernetes/apps/shop-frontend:latest
+  image: registry.gitlab.com/codelab-kubernetes/apps/shop-frontend:openshift
   replicas: 1
   matchLabel:
     app: shop-frontend
-  port: 80
+  port: 8080
   resources:
     requests:
       memory: "32Mi"
@@ -33,7 +33,7 @@ frontend:
 
 database:
   name: shop-database
-  image: registry.gitlab.com/codelab-kubernetes/apps/shop-database:latest
+  image: registry.gitlab.com/codelab-kubernetes/apps/shop-database:openshift
   replicas: 1
   matchLabel:
     app: shop-database
@@ -50,5 +50,5 @@ database:
     databaseName: "shop"
     password: "postgres"
 
-ingress:
-  hostname: "<student-X>.devshop.codelab.dwidwi.tech"
+exposition:
+  hostname: "helm-devshop.apps.ocp4.innershift.sodigital.io"

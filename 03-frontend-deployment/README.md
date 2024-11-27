@@ -19,7 +19,7 @@ Déployons notre frontend avec un second `Deployment` !
     * exécutant l'image `registry.gitlab.com/codelab-kubernetes/apps/shop-frontend:latest`
     * allouant `32Mi` de mémoire et `50m` de CPU
     * limitant la mémoire à `128Mi` et le CPU à `100m`
-    * exposant le port `80`  
+    * exposant le port `8080`  
 
 
 2) Déployer le `Deployment`
