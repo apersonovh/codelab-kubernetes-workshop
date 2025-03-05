@@ -24,13 +24,18 @@ La navigation entre les sections se fait via les flèches de navigation ⬅️ e
  - Récuperer le CLI Openshift sur votre poste : https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.16.9/openshift-client-windows.zip 
  - Recupérer le CLI kubectl sur votre poste : https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#install-kubectl-binary-on-windows-via-direct-download-or-curl
  - Ajouter les dossiers des CLI dans le PATH de votre PC
+ - Tester les commandes suivantes pour vérifier la bonne déclaration dans votre PATH. N'oubliez pas de lancer une nouvelle console ou bash pour la prise en compte des variables d'environnements
+   - > helm version
+   - > oc version
+   - > kubectl version
 
 ### Openshift 
 
 - Instancier un nouveau projet openshift `<trigramme>-kata-kubernetes`sur la plateforme: https://console-openshift-console.apps.ocp4.innershift.sodigital.io/
 ![Create Openshift project](./assets/openshift-create-project.png) 
 
-- Récupérer les informations de connexions d'openshift et executer le login dans votre terminal
+- Récupérer les informations de connexions d'openshift depuis la console Web et executer le login dans votre terminal
+
 ![Login Openshift](./assets/openshift-login.png)
 
 🥳 Vous êtes READY pour commencer le kata !
