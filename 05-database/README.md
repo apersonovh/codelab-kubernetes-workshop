@@ -201,7 +201,7 @@ kubectl exec shop-database-0 -- psql -U postgres -d shop -c "SELECT COUNT(*) FRO
 8) Dans le fichier `backend.yaml` :  
   * Spécifiez l'image `registry.gitlab.com/codelab-kubernetes/apps/shop-backend:database`
   * Ajoutez la variable d'environnement inline `SPRING_R2DBC_URL=r2dbc:postgresql://shop-database:5432/shop`  
-  * Ajouter la variable d'environnement `SPRING_R2DBC_PASSWORD` à partir de la clé `POSTGRES_PASSWORD` du `Secret` `shop-database`
+  * Ajouter la variable d'environnement `SPRING_R2DBC_PASSWORD` à partir de la clé `POSTGRES_PASSWORD` du `Secret` `shop-database-secret`
 
 9) Re-déployez le backend
 ```shell

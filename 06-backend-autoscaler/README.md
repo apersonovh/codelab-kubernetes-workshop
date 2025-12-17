@@ -2,7 +2,7 @@
 
 ## Contexte 📖
 
-Avec Halloween qui arrive, mon appli va subir une charge de dingue !  
+Avec l'aventure qui arrive, mon appli va subir une charge de dingue !  
 
 Il faudrait que je puisse ajouter des instances de mon backend automatiquement en fonction de la charge.  
 
